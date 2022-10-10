@@ -10,6 +10,9 @@
 		"yzhang.markdown-all-in-one",
 		"ms-azuretools.vscode-bicep"
 	],
+	"features": {
+		"azure-cli": "2.40.0z "
+	},
 	"settings": {
 		"python.pythonPath": "/usr/local/bin/python"
 	},

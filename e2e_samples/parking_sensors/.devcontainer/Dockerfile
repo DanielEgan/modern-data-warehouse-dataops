@@ -2,7 +2,8 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License. See LICENSE in the project root for license information.
 #-----------------------------------------------------------------------------------------
-FROM python:3.7-stretch
+# Adding platform so it works on a Mac with M1 Chip - https://stackoverflow.com/questions/65612411/forcing-docker-to-use-linux-amd64-platform-by-default-on-macos
+FROM --platform=linux/amd64 python:3.7-stretch
 
 # Configure apt
 ENV DEBIAN_FRONTEND=noninteractive
@@ -16,9 +17,9 @@ RUN apt-get -y install git procps lsb-release
 RUN apt-get install -y libicu[0-9][0-9]
 
 # Install Azure CLI and application insights and azure devops extension
-RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
-RUN az extension add --name application-insights
-RUN az extension add --name azure-devops
+# RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+# RUN az extension add --name application-insights
+# RUN az extension add --name azure-devops
 
 # Install Databricks CLI
 RUN pip install databricks-cli
